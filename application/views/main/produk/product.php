@@ -78,8 +78,12 @@
                         <a class="btn btn-warning btn-sm edit_p" id="<?=$data['id_product']?>">&nbsp;<i class="fa fa-pencil" ></i></a>
                         
                         
-
+						<?php $i = $this->db->query("select id_product from tbl_cart where id_product = '$data[id_product]'");
+						if($i->num_rows() == 0){?>
 						<a class="btn btn-sm btn-danger hapusModal" id="hapusModal__<?=$data['id_product']?>"  data-toggle="modal" data-target="#deleteModal">&nbsp;<i class="fa fa-trash"></i></a>
+						<?php }else{?>
+						<a class="btn btn-sm btn-light" alt="Produk sudah digunakan" disabled>&nbsp;<i class="fa fa-trash"></i></a>
+						<?php }?>
                         </td>
                         
                     </tr>

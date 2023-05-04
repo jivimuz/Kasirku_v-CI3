@@ -37,7 +37,7 @@
 			<li class="dropdown"><a class="app-nav__item" href="javascript:void(0)" style="text-decoration: none;" data-toggle="dropdown" aria-label="Open Profile Menu">
 				<i class="fa fa-user fa-lg"></i>&nbsp; <?= $dataku['nama_pegawai']; ?></a>
 				<ul class="dropdown-menu settings-menu dropdown-menu-right">
-				    <li><a class="dropdown-item" style="font-size:14px;" href="<?=base_url('logout')?>" onclick="return confirm('anda yakin untuk logout?')"  id="logout" >&nbsp;&nbsp;<i class="fa fa-sign-out fa-lg"></i> &nbsp;Logout</a></li>
+				    <li><a class="dropdown-item" style="font-size:14px;" data-toggle="modal" data-target="#logoutModal" href="<?=base_url('logout')?>"  id="logout" >&nbsp;&nbsp;<i class="fa fa-sign-out fa-lg"></i> &nbsp;Logout</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -57,8 +57,30 @@
 			<h6 class="title-menu">Menu Kasir</h6>
 			<li><a class="app-menu__item <?php if($page=='produk'){echo "active";} ?>" href="<?=base_url('produk')?>"><i class="app-menu__icon fa fa-cube"></i><span class="app-menu__label">Produk</span></a></li>
 			<li><a class="app-menu__item <?php if($page=='transaksi'){echo "active";} ?>" href="<?=base_url('transaksi')?>"><i class="app-menu__icon fa fa-cart-arrow-down"></i><span class="app-menu__label">Transaksi</span></a></li>
-			<li><a class="app-menu__item" onclick="return confirm('Anda ingin Logout?');"  href="<?=base_url('logout')?>"><i class="app-menu__icon fa fa-sign-out"></i><span class="app-menu__label">Logout</span></a></li>
+			<li><a class="app-menu__item"  data-toggle="modal" data-target="#logoutModal"  href="<?=base_url('logout')?>"><i class="app-menu__icon fa fa-sign-out"></i><span class="app-menu__label">Logout</span></a></li>
 		</ul>
 	</aside>
 <div>
+	
+<!-- logout Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="logoutModalLabel">Konfirmasi Logout</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Apakah anda yakin ingin Log out?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="<?= base_url('logout')?>" class="btn btn-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <main class="app-content">

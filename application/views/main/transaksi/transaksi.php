@@ -47,7 +47,7 @@
                         <td class="text-center"><?= date('d-m-Y H:i:s ',strtotime("$data->paid_at")); ?></td>
                         <td class="text-center">Rp. <?= buatRupiah($data->total_harga) ?></td>
                         <td class="text-center">
-                        <a href="<?=base_url('transaksi/show/').$data->id_transaksi ?>" class="btn btn-sm btn-default ">&nbsp;<i class="fa fa-print"></i></a>
+                        <a href="<?=base_url('transaksi/show/').$data->id_transaksi ?>" class="btn btn-sm btn-info ">&nbsp;<i class="fa fa-print"></i></a>
                         </td>
                         
                     </tr>

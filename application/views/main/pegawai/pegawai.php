@@ -72,7 +72,8 @@
                         <?php elseif($data['id_pegawai']== $dataku['id_pegawai']):?> 
                             <a href="#"  disabled class="btn btn-sm btn-light tombol-hapus" alt="Tidak menghapus Administrator"	>&nbsp;<i class="fa fa-trash"></i></a>
                         <?php else :?>
-                            <a href="<?= base_url('main/hapus_pegawai/'.$data['id_pegawai']) ?>" onclick="return confirm('Yakin Hapus <?= $data['nama_pegawai'] ?>')" class="btn btn-sm btn-danger tombol-hapus"><i class="fa fa-trash"></i></a>
+
+							<a class="btn btn-sm btn-danger hapusModal" id="hapusModal__<?=$data['id_pegawai']?>"  data-toggle="modal" data-target="#deleteModal">&nbsp;<i class="fa fa-trash"></i></a>
 
                         <?php endif;?>
                         </td>
@@ -137,9 +138,45 @@
  </div>
 </div>
 
-<!--                                                     end Modal                                                          -->
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus Pegawai</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Apakah anda yakin ingin menghapus produk ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="<?= base_url('main/hapus_pegawai/') ?>" id="hapusLink" class="btn btn-danger">Hapus</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--       end Modal                    -->
 
 <script>
+
+	$(document).ready(function(){
+    $('.hapusModal').click(function(){
+        let isi = $(this).text();
+        let tid = $(this).prop('id');
+        let rid = tid.split('__');
+        let id_baris = rid[1];
+		var hapuslink = document.getElementById('hapusLink');
+
+        if(id_baris){
+			hapuslink.href = "<?= base_url('main/hapus_pegawai/')?>"+id_baris;
+        }
+    })
+})
+
 //form input
 $(document).on('click', '.add_p', function(){
   $.ajax({
