@@ -13,7 +13,7 @@ if (isset($_POST["idnya"])) {
 <div class="row">
     <div class="col-md-12 col-xs-8 col-sm-8">
         <form  action="<?=base_url('main/edit_produk')?>"  method="POST" enctype="multipart/form-data">
-				<h3 class="login-head text-center"><i class="fa fa-plus"></i> Edit Product</h3><br>
+				<h3 class="login-head text-center"><i class="fa fa-edit"></i> Edit Product</h3><br>
 				<div class="form-group">
 					<label class="control-label">Silahkan Isi data dibawah:</label>
 					<input class="form-control" name="nama_product" value="<?=$data['nama_product']?>" type="text" maxlength="30" placeholder="Nama Produk" autofocus required>
@@ -43,7 +43,7 @@ if (isset($_POST["idnya"])) {
                     <input class="form-control" name="stok" min='0' type="number" value="<?= $data['stok']?>" max="9999" placeholder="Stok" autofocus required>
                 </div>
                 <div class="form-group">
-                     <input class="form-control" name="harga_beli" min='100' type="number"  value="<?= $data['harga_beli']?>"  max="99999999" placeholder="Harga Beli (satuan)" autofocus required>
+                     <input class="form-control" name="harga_beli" min='100' type="number"  value="<?= $data['harga_beli']?>"  max="99999999" hidden value="1" placeholder="Harga Beli (satuan)" autofocus required>
                 </div>
                 <div class="form-group">
                     <input class="form-control" name="harga_jual" min='100' type="number"  value="<?= $data['harga_jual']?>"  max="99999999" placeholder="Harga Jual (satuan)" autofocus required>
