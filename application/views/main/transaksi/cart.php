@@ -14,7 +14,7 @@
 	</div>
 	<ul class="app-breadcrumb breadcrumb">
 		<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-		<li class="breadcrumb-item"><a href="<?=base_url()?>produk">Produk</a></li>
+		<li class="breadcrumb-item"><a href="<?=base_url()?>transaksi">Transaksi</a></li>
 		<li class="breadcrumb-item"><a href="javascript:void(0)">Keranjang</a></li>
 	</ul>
 </div>

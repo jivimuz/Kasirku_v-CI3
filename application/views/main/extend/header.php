@@ -29,7 +29,7 @@
 <header class="app-header">
 	<a class="app-header__logo text-left" href="<?=base_url()?>">KASIRKU</a>
 	<a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
-	<?php if($page == 'cetak') {?>
+	<?php if($this->uri->segment(2) == 'cetak'||$this->uri->segment(2) == 'show') {?>
 	<a class="app-nav__item btn btn-default"  onclick="printIni()" style="text-decoration: none;"><i class="fa fa-print"></i>Print Page</a>
 	<?php }?>
 		<ul class="app-nav ">
