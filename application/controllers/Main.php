@@ -314,6 +314,11 @@ class Main extends CI_Controller {
                     $timestamp = time();
                     $gambar = $timestamp . '_' . $_FILES['foto']['name'];
                     move_uploaded_file($_FILES['foto']['tmp_name'], $dir . $gambar);
+					$di = $this->db->query("SELECT foto from tbl_product where id_product = '$id_product'");
+					$d = $di->row();
+					if (file_exists($dir . $d->foto)) {
+						unlink($dir . $d->foto);
+					} 
                 } else {
                     $errors[] = "Gambar melebihi batas 1 MB.";
                 }
