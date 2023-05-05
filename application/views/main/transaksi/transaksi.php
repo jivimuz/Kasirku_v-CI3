@@ -38,8 +38,12 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($list as $data):?>
-                    <tr><td class="text-center"><?= $data->id_transaksi?>.</td>
+                <?php 
+								$no = 0;
+								foreach($list as $data):
+								$no++;
+								?>
+                    <tr><td class="text-center"><?= $no?>.</td>
                        
                         <td class="text-center">
                             <?= $data->nama_pegawai  ?>

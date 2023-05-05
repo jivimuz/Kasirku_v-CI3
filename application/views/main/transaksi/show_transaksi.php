@@ -18,9 +18,11 @@
 </div>
 <div class="tile">
 <img src="<?=base_url('assets/images/assets/')?>kop.png" class="table-responsive p-3" with="100%"><br><br>
-    <div class="col-md-12">
-        
-    </div>
+    <div class="col-md-12 p-3">
+    	<strong>ID Transaksi :</strong> TRX-<?=$d->id_transaksi?><br>
+        <strong>Tanggal transaksi :</strong> <?=date('d-m-Y H:i:s', strtotime($d->paid_at))?><br>
+        <!-- <strong>Nama Penerima :</strong><br> -->
+	</div>
     <div class="col-md-12 ">
     <div class="table-responsive">
      <table class="table" width="100%"  border="1">

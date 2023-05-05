@@ -24,14 +24,13 @@ $(document).ready(function(){
 	"bPaginate": true,
 	"bFilter": true,
 	"bSort": true,
-	"pageLength": 10
+	"pageLength": 10,
+	"ordering": false
 	});
 	
 });
 
-function removeSpaces(input) {
-  input.value = input.value.replace(/\s+/g, '');
-}
+
 </script>
 
 <script type="text/javascript" src="<?=base_url('assets/')?>js/jquery.dataTables.min.js"></script>

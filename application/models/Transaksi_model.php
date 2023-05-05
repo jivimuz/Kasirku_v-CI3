@@ -14,6 +14,7 @@ class Transaksi_model extends CI_Model {
         $this->db->from('tbl_transaksi');
         $this->db->join('tbl_pegawai', 'tbl_transaksi.id_pegawai = tbl_pegawai.id_pegawai');
 		$this->db->where('is_paid', 1);
+		$this->db->order_by('id_transaksi', 'desc');
         $query = $this->db->get();
         return $query->result();
 	}
