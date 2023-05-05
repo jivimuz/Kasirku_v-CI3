@@ -27,20 +27,34 @@
    			<th>Waktu Transaksi</th>
    			<th>Nama Kasir</th>
    			<th>Total Harga</th>
+   			<th>Keuntungan</th>
    		</tr>
 		</thead>
 		<tbody>
    		<?php $no = 0;
+		$untung = 0;
 		$total = 0;
    		if ($data->num_rows() > 0) {
    		 foreach($data->result() as $i) { 
 			$total =$total + $i->total_harga;
-   		 	$no++;?>
+			$no++;
+			$this->load->model('Transaksi_model');
+			$ada = $this->db->query("SELECT SUM(harga_satuan - modal) AS total FROM tbl_cart WHERE id_transaksi = '$i->id_transaksi'");
+				if ($ada) {
+					$query = $ada->row();
+					$cek = $query->total;
+					$untung += $cek;
+				}
+
+			if (!empty($cart)) {
+			}
+   		 	?>
    		<tr>
    			<td><?= $no;?></td>
    			<td><?= $i->paid_at;?></td>
    			<td><?= $i->nama_pegawai;?></td>
    			<td>Rp. <?= buatRupiah($i->total_harga);?></td>
+   			<td>Rp. <?= buatRupiah($cek);?></td>
    		</tr>
    	<?php }}else{?>
 		<tr>
@@ -49,7 +63,8 @@
    	<?php }?>
 	   <tr bgcolor="#f0f0f0">
 			<td colspan="3" class="text-right">Total :</td>
-			<td colspan="1" >Ro. <?=buatRupiah($total)?></td>
+			<td colspan="1" >Rp. <?=buatRupiah($total)?></td>
+			<td colspan="1" >Rp. <?=buatRupiah($untung)?></td>
 		</tr>
 		</tbody>
    	</table>

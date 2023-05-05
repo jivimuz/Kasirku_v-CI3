@@ -46,10 +46,10 @@
                     foreach($dd as $i){?>
                  <tr>
                     <td><?= $i->nama_product?></td>
-                    <td>Rp. <?= buatRupiah($i->harga_jual)?></td>
+                    <td>Rp. <?= buatRupiah($i->harga_satuan)?></td>
                     <td><?=$i->qty?></td>
                     <td><?php 
-                        $sub = $i->harga_jual * $i->qty;
+                        $sub = $i->harga_satuan * $i->qty;
                         $total += $sub;
                         echo 'Rp. '.buatRupiah($sub);
                     ?></td>

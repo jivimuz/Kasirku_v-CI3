@@ -58,7 +58,7 @@ class Transaksi extends CI_Controller {
 		$this->form_validation->set_rules('product', 'Nama Jenis', 'required|trim');
         if ($this->form_validation->run() == true) {
 				$product = $this->input->post('product');
-				$cekProduk = $this->db->query("SELECT id_product FROM tbl_product WHERE nama_product = '$product' LIMIT 1");
+				$cekProduk = $this->db->query("SELECT * FROM tbl_product WHERE nama_product = '$product' LIMIT 1");
 				if ($cekProduk->num_rows() > 0) {
 					$tcek = $cekProduk->row();
 					$cekProduk2 = $this->db->get_where('tbl_cart', array('id_transaksi' => $id, 'id_product' => $tcek->id_product));
@@ -75,6 +75,8 @@ class Transaksi extends CI_Controller {
 				}else{
 					$this->db->set('id_product', $tcek->id_product);
 					$this->db->set('id_transaksi', $id);
+					$this->db->set('modal', $tcek->harga_beli);
+					$this->db->set('harga_satuan', $tcek->harga_jual);
 					$this->db->insert('tbl_cart');
 
 					$this->db->set('stok', 'stok - 1', FALSE);
