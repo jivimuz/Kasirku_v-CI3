@@ -87,6 +87,14 @@ class Main extends CI_Controller {
 			$password = $this->input->post('password');
 			$email = $this->input->post('email');
 			$no_hp = $this->input->post('no_hp');
+
+			if (!preg_match('/^[a-zA-Z0-9]+$/', $username)) {
+				$errors[] = 'Username tidak mendukung spesial karakter.';
+			}
+			
+			if (!preg_match('/^[a-zA-Z ]+$/', $nama_pegawai)) {
+				$errors[] = 'Nama pegawai Hanya memdukung a-Z.';
+			}
 			
 			if(empty($this->input->post('is_admin'))){
 				$is_admin = 0;
@@ -144,6 +152,14 @@ class Main extends CI_Controller {
 			$pass_before = $this->input->post('pass_before');    
 			$email = $this->input->post('email');    
 			$no_hp = $this->input->post('no_hp');
+
+			if (!preg_match('/^[a-zA-Z0-9]+$/', $username)) {
+				$errors[] = 'Username tidak mendukung spesial karakter.';
+			}
+			
+			if (!preg_match('/^[a-zA-Z ]+$/', $nama_pegawai)) {
+				$errors[] = 'Nama pegawai Hanya memdukung a-Z.';
+			}
 
 			if(empty($this->input->post('is_admin'))){
 				$is_admin = 0;
@@ -219,6 +235,10 @@ class Main extends CI_Controller {
         $harga_jual = $this->input->post('harga_jual');
         $gambar = "";
 
+		if (!preg_match('/^[a-zA-Z0-9 ]+$/', $nama_product)) {
+			$errors[] = 'Tidak mendukung spesial karakter.';
+		}
+
         if (!is_numeric($stok) || !is_numeric($harga_beli) || !is_numeric($harga_jual)) {
             $errors[] = "Stok, harga beli, dan harga jual harus berupa angka. Silakan coba lagi.";
         } else {
@@ -276,6 +296,10 @@ class Main extends CI_Controller {
         $harga_beli = $this->input->post('harga_beli');
         $harga_jual = $this->input->post('harga_jual');
         $gambar = "";
+
+		if (!preg_match('/^[a-zA-Z0-9 ]+$/', $nama_product)) {
+			$errors[] = 'Tidak mendukung spesial karakter.';
+		}
 
         if (!is_numeric($stok) || !is_numeric($harga_beli) || !is_numeric($harga_jual)) {
             $errors[] = "Stok, harga beli, dan harga jual harus berupa angka. Silakan coba lagi.";

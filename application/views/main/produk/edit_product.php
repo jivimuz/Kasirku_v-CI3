@@ -43,7 +43,7 @@ if (isset($_POST["idnya"])) {
                     <input class="form-control" name="stok" min='0' type="number" value="<?= $data['stok']?>" max="9999" placeholder="Stok" autofocus required>
                 </div>
                 <div class="form-group">
-                     <input class="form-control" name="harga_beli" min='100' type="number"  value="<?= $data['harga_beli']?>"  max="99999999" hidden value="1" placeholder="Harga Beli (satuan)" autofocus required>
+                     <input class="form-control" name="harga_beli" min='0' type="number"  value="<?= $data['harga_beli']?>"  max="99999999" hidden value="0" placeholder="Harga Beli (satuan)" autofocus >
                 </div>
                 <div class="form-group">
                     <input class="form-control" name="harga_jual" min='100' type="number"  value="<?= $data['harga_jual']?>"  max="99999999" placeholder="Harga Jual (satuan)" autofocus required>

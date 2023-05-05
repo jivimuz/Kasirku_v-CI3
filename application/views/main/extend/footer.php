@@ -28,5 +28,10 @@ $(document).ready(function(){
 	});
 	
 });
+
+function removeSpaces(input) {
+  input.value = input.value.replace(/\s+/g, '');
+}
 </script>
+
 <script type="text/javascript" src="<?=base_url('assets/')?>js/jquery.dataTables.min.js"></script>

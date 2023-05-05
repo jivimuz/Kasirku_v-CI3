@@ -5,7 +5,7 @@
 				<h3 class="login-head text-center"><i class="fa fa-user-plus"></i> Add Pegawai</h3><br>
 				<div class="form-group">
 					<label class="control-label">Silahkan Isi data dibawah:</label>
-					<input class="form-control" name="username" type="text" maxlength="30" placeholder="Username" onkeyup="this.value = this.value.toUpperCase()" autofocus required>
+					<input class="form-control" name="username" type="text" maxlength="30" placeholder="Username" onkeyup="this.value = this.value.toUpperCase();removeSpaces(this);" autofocus required>
                 </div>
                 <div class="form-group">
                     <input class="form-control" name="password" type="password" minlength="6" maxlength="50" placeholder="Password (min 6)" autofocus required>
