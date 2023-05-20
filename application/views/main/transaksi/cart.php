@@ -73,7 +73,7 @@
                         <form action='<?=base_url('transaksi/cart/b/').$i->id_cart?>' method='post'>
                             <input type="text" name="id_product" value="<?=$i->id_product?>" hidden>
                             <input type="text" name="qty_before" value="<?=$i->qty?>" hidden>
-                            <input type="number" min="1" onchange="this.value = Math.max(Math.ceil(Math.abs(this.value || 1)) || 1); submit();" max="<?=$i->stok + $i->qty?>" style="width:50px" required name="qty" class="" value="<?=$i->qty?>">
+                            <input type="text"  pattern="[0-9]+" min="1" onchange="this.value = Math.max(Math.ceil(Math.abs(this.value || 1)) || 1); submit();" max="<?=$i->stok + $i->qty?>" style="width:50px" required name="qty" class="" value="<?=$i->qty?>">
                             <!-- <button type="submit" name="upCart" ><i class="fa fa-save"></i></button> -->
                         </form>
                     </td>

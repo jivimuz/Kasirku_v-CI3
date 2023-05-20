@@ -94,16 +94,16 @@ class Transaksi extends CI_Controller {
 	public function cart_qty_produk($id)
 	{
 		// return "hello world";	
+		$errors= array();
 		$this->form_validation->set_rules('qty', 'QTY', 'required|trim');
 		$this->form_validation->set_rules('id_product', 'ID Produk', 'required|trim');
 		$this->form_validation->set_rules('qty_before', '-', 'required|trim');
         if ($this->form_validation->run() == true) {
 				
-
+			
 			$id_product = $this->input->post('id_product', true);
 			$qty_before = $this->input->post('qty_before', true);
 			$qty = $this->input->post('qty', true);
-
 
 			$ce = $this->db->select('stok')->get_where('tbl_product', array('id_product' => $id_product))->row_array();
 			if($qty < 0 || $qty > ($ce['stok'] + $qty_before)){
@@ -112,22 +112,25 @@ class Transaksi extends CI_Controller {
 
 			if(!empty($errors)){
 				$this->session->set_flashdata('error', display_errors($errors));
+				redirect('transaksi/cart');
 			}else{
 
 				if($qty > $qty_before && $qty != $qty_before){
 
-				$jumlah = $qty - $qty_before; 
+					$jumlah = $qty - $qty_before; 
 					$this->db->query("UPDATE tbl_product set stok = stok - '$jumlah' where id_product='$id_product'");
 					$this->db->query("UPDATE tbl_cart set qty='$qty' where id_cart='$id'");
-					
+	 			redirect('transaksi/cart');
+
 				}elseif($qty < $qty_before && $qty != $qty_before){
 					$jumlah = $qty_before - $qty; 
 					$this->db->query("UPDATE tbl_product set stok = stok + '$jumlah' where id_product='$id_product'");
 					$this->db->query("UPDATE tbl_cart set qty='$qty' where id_cart='$id'");
-				}
+				redirect('transaksi/cart');
 			}
+			redirect('transaksi/cart');
 		}
-	 	redirect('transaksi/cart');
+		}
 	}
 	public function cart_delete_produk($id)
 	{
@@ -170,7 +173,7 @@ class Transaksi extends CI_Controller {
 				
 			}
 		}
-		$success[] = "Barang berhasil dihapus.";
+		$success[] = "Keranjang di kosongkan.";
 		$this->session->set_flashdata('error',  display_success($success));
 		redirect('transaksi/cart');
 		}

@@ -17,7 +17,7 @@
                 </select>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" name="stok" min='0' type="number" max="9999" placeholder="Stok" autofocus required>
+                    <input class="form-control" name="stok" min='1' type="number" max="9999" placeholder="Stok" autofocus required>
                 </div>
                 <div class="form-group">
                      <input class="form-control" name="harga_beli" min='100' type="number" max="99999999" placeholder="Harga Beli (satuan)" autofocus required>
